@@ -1,0 +1,61 @@
+% !TEX root = "../main.tex"
+\begin{titlepage}
+% Hintergrundbild für das Titelblatt aus der Word-Vorlage aus LEA
+% Vertikalen Versatz für das Hintergrundbild anpassen, damit es konform mit der Vorlage wird
+\setlength{\wpYoffset}{22mm}
+\ThisCenterWallPaper{1}{./img/titlebg.jpg}
+
+% Ränderkonfiguration aus Word-Vorlage
+% \newgeometry{top=10mm,right=25mm,bottom=20mm,left=26mm}
+
+% Speziell: Horizontale Ränder für längere Titel minimieren, damit die Anzahl der Zeilen für den Titel
+% nicht überhand nimmt
+% Mein Titel hat mit der Standard-Ränderkonfiguration vier Zeilen, mit dieser nur drei
+\newgeometry{top=10mm,right=10mm,bottom=20mm,left=10mm}
+
+% H-BRS Branding, konfiguriert als Parboxes
+% Speziell: Aus Standard-Ränderkonfiguration fehlenden Rand kompensieren
+\hspace{16mm}
+\parbox[t][][c]{20mm}{
+	\includegraphics[width=20mm]{./img/icons/fhlogo.pdf}
+}
+\hspace{8mm}
+\parbox[t][][c]{\textwidth - 49mm}{
+	\vspace{1mm}
+	\textbf{Hochschule} \newline
+	\textbf{Bonn-Rhein-Sieg} \newline
+	\small{\textit{University of Applied Sciences}} \newline
+	\par Fachbereich \DepartmentGER \newline
+	\small{\textit{Department of \Department}}
+}
+\vspace{40mm}
+
+% Beschriftung
+\begin{center}
+\Huge \textbf{\DocumentType} \\
+\vspace{5mm}
+\large \CourseOfStudies \\
+\vspace{30mm}
+\huge \textbf{\DocumentTitle} \\
+\vspace{26mm}
+\large from \\
+\vspace{1em}
+\Large \textbf{\Author} \\
+\vspace{2em}
+\Large \textbf{\SecondAuthor} \\
+\vspace{2em}
+\Large \textbf{\ThirdAuthor} \\
+\end{center}
+
+% Metadaten (Prüfende / Abgabedatum)
+\begin{table}[!b]
+\centering
+\begin{tabular}{ll}
+%Erstprüfer     & \FirstSupervisor   \\
+%Zweitprüfer    & \SecondSupervisor  \\
+               &                    \\
+\DateOfSubmission	\\
+\end{tabular}
+\end{table}
+\restoregeometry
+\end{titlepage}
