@@ -1,34 +1,47 @@
 %!TEX root="../main.tex"
 \section{Work Packages}
 
+
+
 \subsection{Functional Area - Processing and Storage of Children's Drawings}
 This section covers the topic of ingesting new previously unseen children's drawings, i.e. when a child has created a drawing and first presents it to our AI.
 
-\subsubsection{Work Package - Basic dialog for uploading a new, previously unseen drawing}
-Upon starting a new session, the tool initiates with a warm welcome greeting to users (children).
-It will then explain the concept and present to children a catalog of animals to choose from and draw on their paper.
-After the user uploads their drawings (supported image formats are JPEG and PNG), one of these scenarios could happen:
+\subsubsection{Work Package - Basic dialogs}
+Upon starting, the tool welcomes children.
+In one of the available basic dialogs, it explains some of the concepts.
+In another basic dialog, it presents a catalog of supported animals, with examples.
+In the drawing upload dialog, it accepts an image file, in a format like JPEG or PNG.
+One of these scenarios could happen:
 \begin{itemize}
 \item If there is no detectable object, tell the user to draw an animal chosen from the catalog.
-(Note that the term object here refers to any recognized object from the drawing, it could be anything from a shape to an animal that is from the catalog or not)
-\item If there are detected objects, based on the classification score for each object, verify with the user if the classification is correct (by showing the detected animal region and the predicted animal name)
+(Note that the term object here refers to any recognized object from the drawing, it could be anything from a shape to an animal that is from the catalog or not.)
+\item If there are detected objects, based on the classification score for each object, verify with the user if the classification is correct, by presenting the detected animal region and the predicted animal name, any by asking a question.
 \end{itemize}
 The tool provides a friendly farewell when the interaction session concludes.
 
 \subsubsection{Work Package - Curation of the training dataset of drawings}
-First batch of dataset is collected from a kindergarten.
+First batch of dataset is collected from an elementary school.
 To prepare the dataset for training, some preprocessing steps are required:
 \begin{itemize}
-\item Resize the image to a fixed size
-\item Annotating bounding boxes coordinates and labels of animals in a csv file
-\item Split the dataset into training and test set
+\item Resize the image to a fixed size.
+\item Determine and annotate bounding box coordinates and labels of animals in a file (for example in CSV format) for supervised learning.
+\item Split the dataset into default training, validation, test set. Note that later we might make use of random splits or even cross validation.
 \end{itemize}
-For a wider range of recognition ability and better accuracy, we could take use of public dataset.
-Some available datasets are: \href{https://github.com/googlecreativelab/quickdraw-dataset}{Google Quick, Draw! dataset} (hand drawn doodles) and \href{https://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/}{TU-Berlin Human Sketch Recognition}.
-
+For a wider range of recognition ability and for improved accuracy, we could make use of public datasets.
+Some available datasets are:
+\begin{itemize}
+\item \href{https://github.com/googlecreativelab/quickdraw-dataset}{Google Quick, Draw! dataset} (hand drawn doodles)
+\item \href{https://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/}{TU-Berlin Human Sketch Recognition}
+\end{itemize}
+We also downloaded some examples from the official media library at the university using the student license.
 
 \subsubsection{Work Package - Experiments with preprocessing of drawings}
+In this work package we refine the preprocessing of drawings.
+
 \subsubsection{Work Package - Preprocessing pipeline of drawings}
+In this work package, we create the preprocessing pipeline of drawings that is to be part of the tool.
+
+
 
 \subsection{Functional Area - Recognition of animals}
 This section covers the solution to the problem of recognizing animals in children's drawings, that is recognizing that an animal is present and classifying the animal.
@@ -36,11 +49,16 @@ This section covers the solution to the problem of recognizing animals in childr
 \subsubsection{Work Package - Experiments with a first CNN for recognizing animals}
 Implement a first CNN for recognizing animals in terms of a binary classification (animal present vs. animal not present) and evaluate its performance.
 Frameworks could be tested are: PyTorch, TensorFlow, Keras, etc.
+
 \subsubsection{Work Package - CNN for recognizing animals in terms of a multi-class classification}
 Implement a CNN for recognizing animals in terms of a multi-class classification, i.e. detecting an animal and classifying it, and evaluate its performance.
+
 \subsubsection{Work Package - CNN for recognizing multiple animals in a single drawing}
 Implement an advanced CNN model (e.g. Faster R-CNN, Mask R-CNN) for recognizing multiple animals in a single drawing, localize the animal with bounding boxes and classify each one of them.
 Evaluate its performance.
+
+
+
 \subsection{Functional Area - Advanced recognition of animals (optional)}
 This section is optional.
 We want to look at alternative advanced models for recognizing animals in children's drawings, in particular we want to consider recent state-of-the-art models and concepts that have been developed by researchers and companies in the years 2020-2023.
@@ -56,6 +74,8 @@ We want to look at alternative advanced models for recognizing animals in childr
 	\item YOLO (lightweight, real time recognition but might be not as accuracy as Faster RCNN) \href{https://arxiv.org/abs/1506.02640}{arXiv link}
 	\item EfficientDet (lightweight, suitable for small size dataset) \href{https://arxiv.org/abs/1911.09070}{arXiv link}
 \end{itemize}
+
+
 
 \subsection{Functional Area - Annotating animals with digits to denote their importance}
 This section covers the topic of annotating animals with digits to provide the model a clue about their importance in the story. An animal annotated with a 9 would be a main character, while an animal annotated with a 1 would just appear somewhere in the background of the story.
@@ -73,6 +93,8 @@ In normal cases, each animal is associated with at most one digit, and each digi
 It is a 1-to-1 relationship between digits and animals.
 More concretely, 1 animals to 0..1 digits.
 Only in the special case where there are more digits than animals in the drawing, a digit may be associated with 0 animals.
+
+
 
 \subsection{Functional Area - Annotating animals with markers to vaguely denote their relations}
 Markers are used to indicate which characters should meet with which other characters during the story.
@@ -104,13 +126,23 @@ Each animal is associated with zero of more markers, while each marker is associ
 It is a 1-to-n relationship between animals and markers.
 More concretely 1 animals to 0..n markers.
 
+
+
 \subsection{Functional Area - Annotating animals with activity cards to denote their actions}
 Pre-defined activity cards can be placed onto the picture to indicate which characters should engage in which activities (e.g. eating, drinking, jumping, going for a walk) during the story. (The activity cards are considered a potential feature, still to be prioritized with respect to other features and details.)
 
 \subsubsection{Work Package - Sketch and design various activity cards}
+Ideate and prototype activity cards either physically or digitally.
+
 \subsubsection{Work Package - Experiment with various styles in terms of art}
+Experiment with different art styles.
+The art style should support cases where only a grayscale or black and white printer is available to the parents.
+
 \subsubsection{Work Package - Create the activity cards digitally}
+The activity cards need to become digitalized in terms of print media.
+
 \subsubsection{Work Package - Define and make first use of a process for producing physical activity cards}
+It must be possible for parents to print and cut out the activity cards.
 
 \subsubsection{Work Package - Model for recognizing activity cards in terms of a multi-class classification}
 Implement a model for recognizing activity cards in terms of a multi-class classification, i.e. detecting an activity card and classifying it, and evaluate its performance.
@@ -125,28 +157,57 @@ Each animal is associated with zero of more activity cards, while each activity 
 It is a 1-to-n relationship between animals and activity cards.
 More concretely 1 animals to 0..n activity cards.
 
-\subsection{Functional Area - Generating a children's story based on a children's drawing in text form}
 
-\subsection{Functional Area - Telling a previously generated children's story using elegant text-to-speech}
+
+\subsection{Functional Area - Generating a children's story based on a children's drawing in text form}
+Based on the information gained by analyzing the drawing, a children's story is generated and then told.
+
+\subsubsection{Work Package - Create internal data structure to represent an annotated drawing}
+Gained information, such as animal types, spatial locations of animals in the drawing, importance of each animal obtained via digits, associations between animals obtained via markers, activities of animals obtained via activity cards, must be written to a data structure.
+An internal data structure is facilitated that is then used as input to the story telling module.
+
+\subsubsection{Work Package - Experiment with free to integrate LLMs}
+Determine how to use and how to integrate LLMS, and which LLM to use.
+
+\subsubsection{Work Package - Engineer prompts to make the LLM tell good stories}
+For the LLM to tell a good children's story based on the input, we need to apply instruction tuning and prompt engineering.
+
+
+
+\subsection{Functional Area - Tell children's story using text-to-speech}
+To actually tell the story, we need to apply a text-to-speech module and integrate it into the tool.
+
+\subsubsection{Work Package - Apply text-to-speech}
+We prepared this work package in another project. We need to integrate and apply the solution.
+
+
 
 \subsection{Functional Area - Scientific research}
 Continuous research for different aspects of the project for different written assignments.
-For example:
+Possible topics, associated with certain functional areas or technical approaches considered during the project, may include:
 \begin{itemize}
-	\item Deep learning algorithms for analyzing of drawings
-	\item AI for creative storytelling with focus on children stories
-	\item User Interfaces for interaction between children and AI systems
-	\item more to follow
+	\item Deep learning approaches for analyzing children's drawings
+	\item Generative AI approaches for creative storytelling with a focus on children's stories
+	\item User interfaces for interaction between children and AI systems
 \end{itemize}
 
+\subsubsection{Work Package - Placeholder 1 for scientific research}
+
+\subsubsection{Work Package - Placeholder 2 for scientific research}
+
+\subsubsection{Work Package - Placeholder 2 for scientific research}
+
+
+
 \subsection{Functional Area - Project evaluation}
+Finally, the created product is evaluated.
 
 \subsubsection{Work Package - Preparation of evaluation method}
 This includes the preparation of a consent form for the parents, the acquisition of child testers and scheduling of the evaluation.
 
-\subsubsection{Work Package - Evaluation of draw2story}
+\subsubsection{Work Package - Evaluation of the product}
 Evaluation of the project including drawing of animals, recognizing by the system, annotation with different markers and the prompt of the final story.
 The aim is for a test group of 10 to 15 or more children.
 
-\subsubsection{Work Package - Analyzing of evaluation feedback}
-Collecting, analysing and processing the evaluation data.
+\subsubsection{Work Package - Analysis of evaluation feedback}
+Collecting, analyzing and processing the evaluation data.
