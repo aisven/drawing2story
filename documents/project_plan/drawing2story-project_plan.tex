@@ -1,0 +1,52 @@
+\documentclass[11pt,a4paper,titlepage,final,table]{article}
+
+% Meta-Commands
+\input{./meta}  
+% STY-Datei mit Package- und Command-Definitionen   		
+\usepackage{./hbrs-inf}
+
+
+\begin{document}
+\maketitle
+\clearpage
+\pagenumbering{roman}
+\setcounter{page}{2}
+\pagestyle{plain}
+\parskip 0.5em
+
+% Inhaltsverzeichnis
+%\setcounter{tocdepth}{2}
+%\tableofcontents
+%\clearpage
+
+% Abbildungsverzeichnis
+%\listoffigures
+%\clearpage
+
+% Tabellenverzeichnis
+%\listoftables
+%\clearpage
+
+
+%\clearpage
+\pagenumbering{arabic}
+
+\lstset{
+	basicstyle=\ttfamily\small,
+	keywordstyle=\bfseries,
+	language=[Sharp]C
+}
+
+% Insert sections here
+\input{./section/work_package}
+
+\newpage
+
+%Literaturverzeichnis
+%\begin{thebibliography}{2}
+%\bibitem{1}
+%test
+
+%\end{thebibliography}
+
+\end{document}
