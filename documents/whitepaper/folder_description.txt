@@ -1,0 +1,6 @@
+This folder is supposed to contain the LaTeX sources
+
+as well as generated artifacts such as PDF files of
+
+our whitepaper.
+
