@@ -1,0 +1,74 @@
+%!TEX root="../main.tex"
+\section{Work Packages}
+
+\subsection{Functional Area - Processing and Storage of Children's Drawings}
+This section covers the topic of ingesting new previously unseen children's drawings, i.e. when a child has created a drawing and first presents it to our AI.
+
+\subsubsection{Work Package - Basic dialog for uploading a new, previously unseen drawing}
+Upon starting a new session, the tool initiates with a warm welcome greeting to users (children). It will then explain the concept and present to children a catalog of animals to choose from and draw on their paper.
+After the user uploads their drawings (supported image formats are JPEG and PNG), one of these scenarios could happen:
+\begin{itemize}
+\item If there is no detectable object, tell the user to draw an animal chosen from the catalog. (note that the term object here refers to any recognized object from the drawing, it could be anything from a shape to an animal that is from the catalog or not)
+\item If there are detected objects, based on the classification score for each object, verify with the user if the classification is correct (by showing the detected animal region and the predicted animal name)
+\end{itemize}
+The tool provides a friendly farewell when the interaction session concludes.
+
+\subsubsection{Work Package - Curation of the training dataset of drawings}
+First batch of dataset is collected from a kindergarten.
+To prepare the dataset for training, some preprocessing steps are required:
+\begin{itemize}
+\item Resize the image to a fixed size
+\item Annotating bounding boxes coordinates and labels of animals in a csv file
+\item Split the dataset into training and test set
+\end{itemize}
+For a wider range of recognition ability and better accuracy, we could take use of public dataset. Some available datasets are: \href{https://github.com/googlecreativelab/quickdraw-dataset}{Google Quick, Draw! dataset} (hand drawn doodles) and \href{https://cybertron.cg.tu-berlin.de/eitz/projects/classifysketch/}{TU-Berlin Human Sketch Recognition}.
+
+
+\subsubsection{Work Package - Experiments with preprocessing of drawings}
+\subsubsection{Work Package - Preprocessing pipeline of drawings}
+
+\subsection{Functional Area - Recognition of animals}
+This section covers the solution to the problem of recognizing animals in children's drawings, that is recognizing that an animal is present and classifying the animal.
+
+\subsubsection{Work Package - Experiments with a first CNN for recognizing animals}
+Implement a first CNN for recognizing animals in terms of a binary classification (animal present vs. animal not present) and evaluate its performance.
+Frameworks could be tested are: PyTorch, TensorFlow, Keras, etc.
+\subsubsection{Work Package - CNN for recognizing animals in terms of a multi-class classification}
+Implement a CNN for recognizing animals in terms of a multi-class classification (recognizing the animal and classifying it) and evaluate its performance.
+\subsubsection{Work Package - CNN for recognizing multiple animals in a single drawing}
+Implement an advanced CNN model (e.g. Faster R-CNN, Mask R-CNN) for recognizing multiple animals in a single drawing, localize the animal with bounding boxes and classify each one of them. Evaluate its performance.
+\subsection{Functional Area - Advanced recognition of animals (optional)}
+This section is optional. We want to look at alternative advanced models for recognizing animals in children's drawings, in particular we want to consider recent state-of-the-art models and concepts that have been developed by researchers and companies in the years 2020-2023.
+
+\subsubsection{Work Package - Theoretical consideration of alternative models for animal recognition}
+\begin{itemize}
+	\item ConvNet: \href{https://arxiv.org/abs/2201.03545}{arXiv link}
+	\item CoTNet: \href{https://arxiv.org/abs/2107.12292}{arXiv link}
+	\item VAN: \href{https://arxiv.org/abs/2202.09741}{arXiv link}
+	\item MAE: \href{https://arxiv.org/abs/2111.06377}{arXiv link}
+	\item ViT: \href{https://arxiv.org/abs/2010.11929}{arXiv link}
+	\item Faster R-CNN \href{https://arxiv.org/abs/1506.01497}{arXiv link}
+	\item YOLO (fightweight, real time recognition but might be not as accuracy as Faster RCNN) \href{https://arxiv.org/abs/1506.02640}{arXiv link}
+	\item EfficientDet (lightweight, suitable for small size dataset) \href{https://arxiv.org/abs/1911.09070}{arXiv link}
+\end{itemize}
+
+\subsection{Functional Area - Annotating animals with digits to denote their importance}
+This section covers the topic of annotating animals with digits to provide the model a clue about their importance in the story. An animal annotated with a 9 would be a main character, while an animal annotated with a 1 would just appear somewhere in the background of the story.
+
+\subsection{Functional Area - Annotating animals with markers to denote their relations}
+Markers are used to indicate which characters should meet with and talk to which other characters during the story.
+
+\subsubsection{Work Package - Evaluate different marker types and choose the marker type to use}
+
+\subsection{Functional Area - Annotating animals with activity cards to denote their actions}
+Pre-defined activity cards can be placed onto the picture to indicate which characters should take part in which activities (e.g. eating, drinking, jumping, going for a walk) during the story. (The activity cards are considered a potential feature, still to be prioritized with respect to other features and details.)
+
+\subsubsection{Work Package - Sketch and design various activity cards}
+\subsubsection{Work Package - Experiment with various styles in terms of art}
+\subsubsection{Work Package - Create the activity cards digitally}
+\subsubsection{Work Package - Define and make first use of a process for producing physical activity cards}
+
+\subsection{Functional Area - Generating a children's story based on a children's drawing in text form}
+
+\subsection{Functional Area - Telling a previously generated children's story using elegant text-to-speech}
+

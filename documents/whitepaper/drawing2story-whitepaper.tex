@@ -1,0 +1,77 @@
+\documentclass[11pt,a4paper,titlepage,final,table]{article}
+
+% Meta-Commands
+\input{./meta}  
+% STY-Datei mit Package- und Command-Definitionen   		
+\usepackage{./hbrs-inf}
+
+
+\begin{document}
+\maketitle
+\clearpage
+\pagenumbering{roman}
+\setcounter{page}{2}
+\pagestyle{plain}
+\parskip 0.5em
+
+% Inhaltsverzeichnis
+%\setcounter{tocdepth}{2}
+%\tableofcontents
+%\clearpage
+
+% Abbildungsverzeichnis
+%\listoffigures
+%\clearpage
+
+% Tabellenverzeichnis
+%\listoftables
+%\clearpage
+
+
+%\clearpage
+\pagenumbering{arabic}
+
+\lstset{
+	basicstyle=\ttfamily\small,
+	keywordstyle=\bfseries,
+	language=[Sharp]C
+}
+
+% Hier Inhalte einfügen
+% Einleitung
+\input{./section/project_idea}
+\input{./section/related_works}
+%\input{./section/work_package}
+\input{./section/game_design}
+\input{./section/hardware_and_frameworks}
+\input{./section/qualification}
+\input{./section/experience}
+\input{./section/research_questions}
+% Abschnitt 2
+
+\newpage
+
+%Literaturverzeichnis
+\begin{thebibliography}{2}
+\bibitem{1}
+Polsley et al. https://link.springer.com/article/10.1007/s40593-021-00279-7, 2021
+\bibitem{2}
+Beltzung et al https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9945213/, 2023
+\bibitem{3}
+Google Creative Labs. https://experiments.withgoogle.com/quick-draw, 2017 
+\bibitem{4}
+Meta. https://about.fb.com/news/2021/12/using-ai-to-animate-childrens-drawings/, 2021
+\bibitem{5}
+Shakeri. https://dl.acm.org/doi/abs/10.1145/3462204.3481771 , 2021
+\bibitem{6}
+C. Zhang et al. https://dl.acm.org/doi/abs/10.1145/3491102.3501914, 2022
+\bibitem{7}
+Z. Zhang et al. https://dl.acm.org/doi/abs/10.1145/3491102.3517479, 2022
+\bibitem{8}R. Brunelli. Template Matching Techniques in Computer Vision: Theory and Practice, Wiley, ISBN 978-0-470-51706-2, 2009
+\bibitem{9}J. Canny. A Computational Approach To Edge Detection, IEEE Transactions on Pattern Analysis and Machine Intelligence, 1986
+\bibitem{10}
+Girshick, R., Donahue, J., Darrell, T., and Malik, J. Rich feature hierarchies
+for accurate object detection and semantic segmentation. CVPR, 2014
+\end{thebibliography}
+
+\end{document}

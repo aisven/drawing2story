@@ -1,0 +1,77 @@
+% Packages
+% UTF-8 Encoding für die direkte Eingabe von Umlauten (ä, ö, ü) oder ß
+\RequirePackage[utf8]{inputenc}
+% Deutsch und Englisch, Deutsch dabei als Hauptsprache
+\RequirePackage[english]{babel}
+% Mathematische Symbole
+\RequirePackage{amssymb}
+% Pseudocode
+%\RequirePackage[Code-Fragment]{algorithm}
+%\RequirePackage{algpseudocode}
+% Quellcode
+\RequirePackage{listings}
+% Konfiguriert die Seitenränder gemäß Prüfungsordnung
+\RequirePackage[left=40mm,right=20mm,top=25mm,bottom=20mm]{geometry}
+% Beschriftungen für Tabellen und Abbildungen ("small" entspricht etwa 11pt, gemäß Prüfungsordnung)
+\RequirePackage[font={small}]{caption}
+% Multi-Zeilen für Tabellen
+\RequirePackage{multirow}
+% Grafiken einbinden und positionieren
+\RequirePackage{graphicx}
+% Hintergrundgrafiken (benötigt mindestens für Titelseite)
+\RequirePackage{wallpaper}
+% Anhänge
+\RequirePackage[toc,title,page]{appendix}
+% Datumsangaben.
+% useregional=numeric in Kombination mit ngerman drückt \today mit vorangehenden Nullen aus.
+\RequirePackage[useregional=numeric]{datetime2}
+% Farbe
+\RequirePackage{xcolor}
+% Zusätzliche Meta-Informationen in PDF-Datei einsetzen
+\RequirePackage{ifpdf}
+% Zitate
+\RequirePackage{csquotes}
+
+% Querverweise im Dokument.
+% hyperref sollte immer als letztes Package geladen werden, um Probleme zu vermeiden.
+% (https://ftp.fau.de/ctan/macros/latex/contrib/hyperref/doc/hyperref-doc.html#x1-30002)
+\RequirePackage{hyperref}
+
+% Literatur-Verarbeitung
+\RequirePackage[backend=biber,sorting=ynt,sortcites=true,hyperref=true,style=ieee]{biblatex}
+
+\ifpdf
+\pdfinfo{
+    /Author (\Author)
+    /Title  (\DocumentTitle)
+    /Subject (\DocumentSubject)
+    /Keywords (\Keywords)
+}
+\fi
+
+% Links anklickbar machen
+\definecolor{darkblue}{rgb}{0,0,0.5}
+\hypersetup{
+    colorlinks = true,
+    linkcolor = black,
+    urlcolor = darkblue,
+    citecolor = black,
+    breaklinks = true,
+    pdftitle = {\DocumentTitle},
+    pdfauthor = {\Author},
+    pdfcreator = {\Author},
+    pdfsubject = {\DocumentSubject},
+    pdfkeywords = {\Keywords}
+}
+
+\clubpenalty=10000 % schliesst Schusterjungen aus
+\widowpenalty=10000 % schliesst Hurenkinder aus
+
+\parskip 1em % Eine Schriftgröße Abstand zwischen Paragraphen
+\parindent 0pt % kein Einzug am Absatzbeginn
+
+% Überschreibt das \maketitle-Command, indem es eine vorformatierte titlepage-Umgebung einsetzt.
+\renewcommand{\maketitle}{
+	\pagestyle{empty}
+	\input{./metapages/title}
+}
