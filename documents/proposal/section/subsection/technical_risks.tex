@@ -6,3 +6,23 @@
     \item also for each technical risk show how we want to mitigate it
 \end{itemize}
 
+\subsubsection{Runtime efficiency and size of language models}
+
+In fine-tuning or in inference, a language model may turn out to be inefficient and slow.
+This could be a problem in particular in inference, since then a user would have to wait longer until a story is generated.
+
+Or, a language model may simply be too large to fit into the computer memory, which would prevent it from being used at all on the particular computer.
+
+To mitigate these two technical risks, we intend to look into small language models (SLMs) and their applicability to our goal of generating stories suitable for children.
+In particular also, we intend to look into optimized language models that consist of and calculate with integer numbers instead of floating point numbers.
+This is a technological trend that allows models of a particular size in bytes to consist of more or wider layers, thus have more weights, more parameters, allow for lager context sizes.
+In other words, by changing the internal numerical data type, researchers have been able to create larger models that still are of feasible sizes in bytes and thus suitable for local execution on consumer hardware.
+
+A different mitigation to this technical risk, which is however more difficult and a less readily accessible, could be the use of streaming, which is a technological trend where a model is at no point in time fully loaded into the computer memory and is instead streamed from a local disk or from some other kind of storage.
+A possible pattern could be to stream such a model, during a forward-pass or during back-propagation, in batches of layers, so that at each point in time only a subset, in other words a batch, of layers of the model would need to be present in computer memory, thus overcoming the memory bottleneck.
+
+\subsubsection{Dataset for fine-tuning language models}
+
+To obtain or to curate a dataset suitable for fine-tuning a pre-trained language model towards generating better stories for children may turn out to be a hard task.
+
+

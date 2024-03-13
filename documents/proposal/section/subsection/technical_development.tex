@@ -7,3 +7,14 @@
     \item aspects of software craftsmanship or clean code or code quality
 \end{itemize}
 
+\subsubsection{Fine-tuning of language models for story generation}
+
+Regarding the task of generating a story, we want to look into methods of fine-tuning pre-trained language models.
+The idea is to leverage the full knowledge of an existing, freely available, pre-trained language model, which acquired its knowledge during its elaborate training process, and to tailor it towards a particular task, to obtain more apt outputs.
+
+In our case, we want a fine-tuned language model to generate better stories for our target audience, the children.
+A qualification or quantification of what better means might be part of the research, but in the most simple and straight forward approach, we generate multiple stories and judge as humans as to how good and suitable these stories are, thereby comparing them with previously generated stories.
+
+Fine-tuning language models can be especially valuable when an input dataset is limited, because training from scratch with a limited dataset usually yields a model that has not seen enough, that does not generalize well and is quickly over-fitted on the limited dataset, that does not achieve the task and instead yields rather random outputs.
+
+Two key aspects in fine-tuning are going to be the choice of the pre-trained model and the given dataset.
